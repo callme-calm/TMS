@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Task List</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+</head>
+<body>
+<h1>Tasks</h1>
+
+<!-- Display a message if there are no tasks -->
+<div th:if="${tasks == null || tasks.isEmpty()}">
+    <p>No tasks available.</p>
+</div>
+
+<!-- Display the tasks if they are available -->
+<div th:if="${tasks != null && !tasks.isEmpty()}">
+    <table>
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Deadline</th>
+            <th>Priority</th>
+            <th>Category</th>
+            <th>Status</th>
+            <th>Assigned To</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="task : ${tasks}">
+            <td th:text="${task.title}"></td>
+            <td th:text="${task.description}"></td>
+            <td th:text="${task.deadline}"></td>
+            <td th:text="${task.priority}"></td>
+            <td th:text="${task.category}"></td>
+            <td th:text="${task.status}"></td>
+            <td th:text="${task.assignedTo.username}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

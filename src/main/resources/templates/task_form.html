@@ -1,0 +1,266 @@
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Task Form</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<h1 th:text="${task.id == null} ? 'Create Task' : 'Edit Task'">Task Form</h1>-->
+<!--<form th:action="${task.id == null} ? @{/manager/tasks/new} : @{/manager/tasks/update/{id}(id=${task.id})}"-->
+<!--      th:object="${task}" method="post">-->
+<!--    <div>-->
+<!--        <label for="title">Title:</label>-->
+<!--        <input type="text" id="title" name="title" th:field="*{title}" required>-->
+<!--    </div>-->
+<!--    <div>-->
+<!--        <label for="description">Description:</label>-->
+<!--        <textarea id="description" name="description" th:field="*{description}" required></textarea>-->
+<!--    </div>-->
+<!--    <div>-->
+<!--        <label for="deadline">Deadline:</label>-->
+<!--        <input type="date" id="deadline" name="deadline" th:field="*{deadline}" required>-->
+<!--    </div>-->
+<!--    <div>-->
+<!--        <label for="priority">Priority:</label>-->
+<!--        <select id="priority" name="priority" th:field="*{priority}" required>-->
+<!--            <option value="LOW">Low</option>-->
+<!--            <option value="MEDIUM">Medium</option>-->
+<!--            <option value="HIGH">High</option>-->
+<!--        </select>-->
+<!--    </div>-->
+<!--    <div>-->
+<!--        <label for="category">Category:</label>-->
+<!--        <input type="text" id="category" name="category" th:field="*{category}" required>-->
+<!--    </div>-->
+<!--    <div>-->
+<!--        <label for="status">Status:</label>-->
+<!--        <select id="status" name="status" th:field="*{status}" required>-->
+<!--            <option value="PENDING">Pending</option>-->
+<!--            <option value="IN_PROGRESS">In Progress</option>-->
+<!--            <option value="COMPLETED">Completed</option>-->
+<!--        </select>-->
+<!--    </div>-->
+<!--    <div>-->
+<!--        <label for="assignedTo">Assigned To:</label>-->
+<!--        <select id="assignedTo" name="assignedTo.id" th:field="*{assignedTo.id}" required>-->
+<!--            <option th:each="user : ${users}" th:value="${user.id}" th:text="${user.username}"></option>-->
+<!--        </select>-->
+<!--    </div>-->
+<!--    <button type="submit" th:text="${task.id == null} ? 'Create Task' : 'Update Task'">Create Task</button>-->
+<!--</form>-->
+<!--<a href="/manager/tasks">Back to Tasks</a>-->
+<!--</body>-->
+<!--</html>-->
+
+
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Task Form</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<h1 th:text="${task.id == null} ? 'Create Task' : 'Edit Task'">Task Form</h1>-->
+<!--<form id="taskForm">-->
+<!--    <div>-->
+<!--        <label for="title">Title:</label>-->
+<!--        <input type="text" id="title" name="title" th:value="${task.title}" required>-->
+<!--    </div>-->
+<!--    <div>-->
+<!--        <label for="description">Description:</label>-->
+<!--        <textarea id="description" name="description" required th:text="${task.description}"></textarea>-->
+<!--    </div>-->
+<!--    <div>-->
+<!--        <label for="deadline">Deadline:</label>-->
+<!--        <input type="date" id="deadline" name="deadline" th:value="${task.deadline}" required>-->
+
+<!--    </div>-->
+<!--    <div>-->
+<!--        <label for="priority">Priority:</label>-->
+<!--        <select id="priority" name="priority" required>-->
+<!--            <option value="LOW" th:selected="${task.priority == 'LOW'}">Low</option>-->
+<!--            <option value="MEDIUM" th:selected="${task.priority == 'MEDIUM'}">Medium</option>-->
+<!--            <option value="HIGH" th:selected="${task.priority == 'HIGH'}">High</option>-->
+<!--        </select>-->
+<!--    </div>-->
+<!--    <div>-->
+<!--        <label for="category">Category:</label>-->
+<!--&lt;!&ndash;        <input type="text" id="category" name="category" th:value="${task.category}" required>&ndash;&gt;-->
+<!--&lt;!&ndash;        <label for="category">Category:</label>&ndash;&gt;-->
+<!--&lt;!&ndash;        <input type="text" id="category" name="category" th:field="*{category}" required>&ndash;&gt;-->
+<!--        <select id="category" name="category" th:value="${task.category}" required>-->
+<!--            <option value="CATEGORY_1" th:selected="${task.category == 'CATEGORY_1'}">CATEGORY_1</option>-->
+<!--            <option value="CATEGORY_2" th:selected="${task.category == 'CATEGORY_2'}">CATEGORY_2</option>-->
+<!--            <option value="CATEGORY_3" th:selected="${task.category == 'CATEGORY_3'}">CATEGORY_3</option>-->
+<!--            <option value="CATEGORY_4" th:selected="${task.category == 'CATEGORY_4'}">CATEGORY_4</option>-->
+<!--            <option value="test" th:selected="${task.category == 'test'}">test</option>-->
+<!--        </select>-->
+<!--    </div>-->
+<!--    <div>-->
+<!--        <label for="status">Status:</label>-->
+<!--        <select id="status" name="status" required>-->
+<!--            <option value="PENDING" th:selected="${task.status == 'PENDING'}">Pending</option>-->
+<!--            <option value="IN_PROGRESS" th:selected="${task.status == 'IN_PROGRESS'}">In Progress</option>-->
+<!--            <option value="COMPLETED" th:selected="${task.status == 'COMPLETED'}">Completed</option>-->
+<!--        </select>-->
+<!--    </div>-->
+<!--    <div>-->
+<!--        <label for="assignedTo">Assigned To:</label>-->
+<!--        <select id="assignedTo" name="assignedTo" required>-->
+<!--            <option th:each="user : ${users}" th:value="${user.id}" th:text="${user.username}" th:selected="${task.assignedTo != null && task.assignedTo.id == user.id}"></option>-->
+<!--        </select>-->
+<!--    </div>-->
+<!--    <button type="submit" th:text="${task.id == null} ? 'Create Task' : 'Update Task'">Create Task</button>-->
+<!--</form>-->
+<!--<a href="/manager/tasks">Back to Tasks</a>-->
+
+<!--<script>-->
+<!--    document.getElementById('taskForm').addEventListener('submit', function(event) {-->
+<!--        event.preventDefault();-->
+
+<!--&lt;!&ndash;        const taskId = /*[[${task.id}]]*/ 'null'; // For Thymeleaf processing&ndash;&gt;-->
+<!--        const taskId = ${task.id};-->
+<!--        console.log('taskId:', taskId);-->
+<!--        const url = taskId !== 'null' ? `/manager/tasks/update/${taskId}` : '/manager/tasks/new';-->
+<!--        const method = taskId !== 'null' ? 'PUT' : 'POST';-->
+
+<!--        const title = document.getElementById('title').value;-->
+<!--        const description = document.getElementById('description').value;-->
+<!--        const deadline = document.getElementById('deadline').value;-->
+<!--        const priority = document.getElementById('priority').value;-->
+<!--        const category = document.getElementById('category').value;-->
+<!--        console.log('Category:', category);-->
+<!--        const status = document.getElementById('status').value;-->
+<!--        const assignedTo = document.getElementById('assignedTo').value;-->
+
+<!--        fetch(url, {-->
+<!--            method: method,-->
+<!--            headers: {-->
+<!--                'Content-Type': 'application/json'-->
+<!--            },-->
+<!--            body: JSON.stringify({ title, description, deadline, priority, category, status, assignedTo })-->
+<!--        })-->
+<!--        .then(response => response.json())-->
+<!--        .then(data => {-->
+<!--            console.log('Success:', data);-->
+<!--            alert(taskId !== 'null' ? 'Task updated successfully' : 'Task added successfully');-->
+<!--            window.location.href = '/manager/tasks';-->
+<!--        })-->
+<!--        .catch(error => {-->
+<!--            console.error('Error:', error);-->
+<!--            alert('An error occurred while processing the task.');-->
+<!--        });-->
+<!--    });-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+
+
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Task Form</title>
+</head>
+<body>
+<h1 th:text="${task.id == null} ? 'Create Task' : 'Edit Task'">Task Form</h1>
+<form id="taskForm" th:action="@{/manager/tasks/{id}(id=${task.id})}" method="post">
+<!--    <input type="hidden" th:if="${task.id != null}" name="_method" value="put" />-->
+    <input type="hidden" id="taskId" name="taskId" th:value="${task.id}" />
+    <div>
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" th:value="${task.title}" required>
+    </div>
+    <div>
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" required th:text="${task.description}"></textarea>
+    </div>
+    <div>
+        <label for="deadline">Deadline:</label>
+        <input type="date" id="deadline" name="deadline" th:value="${task.deadline}" required>
+    </div>
+    <div>
+        <label for="priority">Priority:</label>
+        <select id="priority" name="priority" required>
+            <option value="LOW" th:selected="${task.priority == 'LOW'}">Low</option>
+            <option value="MEDIUM" th:selected="${task.priority == 'MEDIUM'}">Medium</option>
+            <option value="HIGH" th:selected="${task.priority == 'HIGH'}">High</option>
+        </select>
+    </div>
+    <div>
+        <label for="category">Category:</label>
+        <select id="category" name="category" th:value="${task.category}" required>
+            <option value="CATEGORY_1" th:selected="${task.category == 'CATEGORY_1'}">CATEGORY_1</option>
+            <option value="CATEGORY_2" th:selected="${task.category == 'CATEGORY_2'}">CATEGORY_2</option>
+            <option value="CATEGORY_3" th:selected="${task.category == 'CATEGORY_3'}">CATEGORY_3</option>
+            <option value="CATEGORY_4" th:selected="${task.category == 'CATEGORY_4'}">CATEGORY_4</option>
+            <option value="test" th:selected="${task.category == 'test'}">test</option>
+        </select>
+    </div>
+    <div>
+        <label for="status">Status:</label>
+        <select id="status" name="status" required>
+            <option value="PENDING" th:selected="${task.status == 'PENDING'}">Pending</option>
+            <option value="IN_PROGRESS" th:selected="${task.status == 'IN_PROGRESS'}">In Progress</option>
+            <option value="COMPLETED" th:selected="${task.status == 'COMPLETED'}">Completed</option>
+        </select>
+    </div>
+    <div>
+        <label for="assignedTo">Assigned To:</label>
+        <select id="assignedTo" name="assignedTo" required>
+            <option th:each="user : ${users}" th:value="${user.id}" th:text="${user.username}" th:selected="${task.assignedTo != null && task.assignedTo.id == user.id}"></option>
+        </select>
+    </div>
+    <button type="submit" th:text="${task.id == null} ? 'Create Task' : 'Update Task'">Create Task</button>
+</form>
+<a href="/manager/tasks">Back to Tasks</a>
+
+<script>
+    document.getElementById('taskForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const taskId = document.getElementById('taskId').value;
+        console.log('taskId:', taskId);
+
+        const url = taskId !== 'null' ? `/manager/tasks/update/${taskId}` : '/manager/tasks/new';
+        console.log('url:', url);
+<!--        const method = taskId !== 'null' ? 'PUT' : 'POST';-->
+       const method ='POST';
+        console.log('method:', method);
+
+        const title = document.getElementById('title').value;
+        console.log('title:', title);
+        const description = document.getElementById('description').value;
+        console.log('description:',description );
+        const deadline = document.getElementById('deadline').value;
+        const priority = document.getElementById('priority').value;
+        const category = document.getElementById('category').value;
+        console.log('Category:', category);
+        const status = document.getElementById('status').value;
+        const assignedTo = document.getElementById('assignedTo').value;
+
+        fetch(url, {
+            method: method,
+            headers: {
+                'Content-Type': 'application/json'
+            },
+
+            body: JSON.stringify({ title, description, deadline, priority, category, status, assignedTo })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Success:', data);
+            alert(taskId !== 'null' ? 'Task updated successfully' : 'Task added successfully');
+            window.location.href = '/manager/tasks';
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred while processing the task.');
+        });
+    });
+</script>
+</body>
+</html>
+
+

@@ -1,0 +1,39 @@
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <title>Login</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<form action="/login" method="post">-->
+<!--    <label for="username">Username:</label>-->
+<!--    <input type="text" id="username" name="username"><br>-->
+
+<!--    <label for="password">Password:</label>-->
+<!--    <input type="password" id="password" name="password"><br>-->
+
+<!--    <button type="submit">Login</button>-->
+<!--</form>-->
+<!--</body>-->
+<!--</html>-->
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" media="all" th:href="@{/login.css}" type="text/css" >
+</head>
+<body>
+<div class="login-container">
+    <h1>Login</h1>
+    <form action="/login" method="post">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" class="login-input"><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" class="login-input"><br>
+
+        <button type="submit" class="login-btn">Login</button>
+    </form>
+</div>
+</body>
+</html>

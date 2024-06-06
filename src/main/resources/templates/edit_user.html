@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit User</title>
+</head>
+<body>
+<h1>Edit User</h1>
+<form th:action="@{/manager/users/update/{id}(id=${user.id})}" th:object="${user}" method="post">
+    <div>
+        <label for="username">Name:</label>
+        <input type="text" id="username" name="username" th:field="${user.username}">
+    </div>
+    <div>
+        <label for="roles">Role:</label>
+        <select id="roles" name="roles" th:field="${user.roles}">
+            <option th:each="role : ${allRoles}" th:value="${role.id}" th:text="${role.name}"
+                    th:selected="${role.id == user.getRole().id}"></option>
+        </select>
+    </div>
+    <button type="submit">Update</button>
+</form>
+</body>
+</html>

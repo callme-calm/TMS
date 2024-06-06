@@ -1,3 +1,48 @@
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <title>Task List</title>-->
+<!--    <link rel="stylesheet" type="text/css" href="/css/styles.css">-->
+<!--</head>-->
+<!--<body>-->
+<!--<h1>Tasks</h1>-->
+
+<!--&lt;!&ndash; Display a message if there are no tasks &ndash;&gt;-->
+<!--<div th:if="${tasks == null || tasks.isEmpty()}">-->
+<!--    <p>No tasks available.</p>-->
+<!--</div>-->
+
+<!--&lt;!&ndash; Display the tasks if they are available &ndash;&gt;-->
+<!--<div th:if="${tasks != null && !tasks.isEmpty()}">-->
+<!--    <table>-->
+<!--        <thead>-->
+<!--        <tr>-->
+<!--            <th>Title</th>-->
+<!--            <th>Description</th>-->
+<!--            <th>Deadline</th>-->
+<!--            <th>Priority</th>-->
+<!--            <th>Category</th>-->
+<!--            <th>Status</th>-->
+<!--            <th>Assigned To</th>-->
+<!--        </tr>-->
+<!--        </thead>-->
+<!--        <tbody>-->
+<!--        <tr th:each="task : ${tasks}">-->
+<!--            <td th:text="${task.title}"></td>-->
+<!--            <td th:text="${task.description}"></td>-->
+<!--            <td th:text="${task.deadline}"></td>-->
+<!--            <td th:text="${task.priority}"></td>-->
+<!--            <td th:text="${task.category}"></td>-->
+<!--            <td th:text="${task.status}"></td>-->
+<!--            <td th:text="${task.assignedTo.username}"></td>-->
+<!--        </tr>-->
+<!--        </tbody>-->
+<!--    </table>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+
+
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -24,6 +69,8 @@
             <th>Category</th>
             <th>Status</th>
             <th>Assigned To</th>
+            <th>Message</th>
+            <th>Submit</th>
         </tr>
         </thead>
         <tbody>
@@ -35,6 +82,17 @@
             <td th:text="${task.category}"></td>
             <td th:text="${task.status}"></td>
             <td th:text="${task.assignedTo.username}"></td>
+            <td>
+                <form th:action="@{/tasks/{taskId}/message(taskId=${task.id})}" method="post">
+                    <input type="text" name="message" th:value="${task.message}" />
+                    <button type="submit">Send Message</button>
+                </form>
+            </td>
+            <td>
+                <form th:action="@{/tasks/{taskId}/submit(taskId=${task.id})}" method="post">
+                    <button type="submit" th:disabled="${task.submitted}">Submit</button>
+                </form>
+            </td>
         </tr>
         </tbody>
     </table>

@@ -1,5 +1,6 @@
 package com.example.tms.service;
 
+import com.example.tms.config.ResourceNotFoundException;
 import com.example.tms.model.Task;
 import com.example.tms.model.User;
 import com.example.tms.repository.TaskRepository;
@@ -69,5 +70,25 @@ public class TaskService {
 
     public List<Task> findTasksByAssignedTo(User currentUser) {
         return taskRepository.findByAssignedTo(currentUser);
+    }
+
+
+
+    // Other methods...
+
+    public void addMessage(Long taskId, String message) {
+        Task task = taskRepository.findById(taskId).orElseThrow(() -> new ResourceNotFoundException("Task not found"));
+        task.setMessage(message);
+        taskRepository.save(task);
+    }
+
+    public void submitTask(Long taskId) {
+        Task task = taskRepository.findById(taskId).orElseThrow(() -> new ResourceNotFoundException("Task not found"));
+        task.setSubmitted(true);
+        taskRepository.save(task);
+    }
+
+    public List<Task> getSubmittedTasks() {
+        return taskRepository.findBySubmitted(true);
     }
 }

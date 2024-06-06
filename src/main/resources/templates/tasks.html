@@ -53,6 +53,7 @@
         <th>Category</th>
         <th>Status</th>
         <th>Assigned To</th>
+        <th>Message from user</th>
         <th>Actions</th>
     </tr>
     </thead>
@@ -65,6 +66,7 @@
         <td th:text="${task.category}"></td>
         <td th:text="${task.status}"></td>
         <td th:text="${task.assignedTo.username}"></td>
+        <td th:text="${task.message}"></td>
         <td>
             <a th:href="@{/manager/tasks/edit/{id}(id=${task.id})}">Edit</a>
             <a th:href="@{/manager/tasks/delete/{id}(id=${task.id})}">Delete</a>

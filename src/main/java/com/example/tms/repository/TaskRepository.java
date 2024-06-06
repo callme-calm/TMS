@@ -12,4 +12,5 @@ import java.util.List;
 public interface TaskRepository extends JpaRepository<Task, Long> {
     //List<Task> findByAssignedTo(Long assignedTo);
     List<Task> findByAssignedTo(User user);
+    List<Task> findBySubmitted(boolean submitted);
 }

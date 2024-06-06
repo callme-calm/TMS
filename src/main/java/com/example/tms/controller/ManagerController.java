@@ -228,4 +228,11 @@ public class ManagerController {
         taskService.deleteTask(id);
         return "redirect:/manager/tasks";
     }
+
+    @GetMapping("/tasks/submitted")
+    public String getSubmittedTasks(Model model) {
+        List<Task> submittedTasks = taskService.getSubmittedTasks();
+        model.addAttribute("tasks", submittedTasks);
+        return "submittedTasks";
+    }
 }

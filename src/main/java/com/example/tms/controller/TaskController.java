@@ -77,4 +77,26 @@ public class TaskController {
     public void deleteTask(@PathVariable Long id) {
         taskService.deleteTask(id);
     }
+
+
+    // Other methods...
+
+    @PostMapping("/{taskId}/message")
+    public String addMessage(@PathVariable Long taskId, @RequestParam String message) {
+        taskService.addMessage(taskId, message);
+        return "redirect:/users/dashboard";
+    }
+
+    @PostMapping("/{taskId}/submit")
+    public String submitTask(@PathVariable Long taskId) {
+        taskService.submitTask(taskId);
+        return "redirect:/users/dashboard";
+    }
+
+    @GetMapping("/submitted")
+    public String getSubmittedTasks(Model model) {
+        List<Task> submittedTasks = taskService.getSubmittedTasks();
+        model.addAttribute("tasks", submittedTasks);
+        return "submittedTasks";
+    }
 }

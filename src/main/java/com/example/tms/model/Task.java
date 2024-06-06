@@ -116,4 +116,27 @@ public class Task {
     public enum Status {
         PENDING, IN_PROGRESS, COMPLETED
     }
+
+    @Column(length = 1000)
+    private String message;
+
+    private boolean submitted;
+
+    // Getters and setters...
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public boolean isSubmitted() {
+        return submitted;
+    }
+
+    public void setSubmitted(boolean submitted) {
+        this.submitted = submitted;
+    }
 }

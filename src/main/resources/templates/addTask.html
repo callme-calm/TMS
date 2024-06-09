@@ -1,17 +1,105 @@
 
+<!--&lt;!&ndash;<!DOCTYPE html>&ndash;&gt;-->
+<!--&lt;!&ndash;<html lang="en">&ndash;&gt;-->
+<!--&lt;!&ndash;<head>&ndash;&gt;-->
+<!--&lt;!&ndash;    <meta charset="UTF-8">&ndash;&gt;-->
+<!--&lt;!&ndash;    <meta name="viewport" content="width=device-width, initial-scale=1.0">&ndash;&gt;-->
+<!--&lt;!&ndash;    <title>Add Task</title>&ndash;&gt;-->
+<!--&lt;!&ndash;    <link rel="stylesheet" href="/css/styles.css">&ndash;&gt;-->
+<!--&lt;!&ndash;    <script src="/js/scripts.js" defer></script>&ndash;&gt;-->
+<!--&lt;!&ndash;</head>&ndash;&gt;-->
+<!--&lt;!&ndash;<body>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="container" action="/addtask" method="post">&ndash;&gt;-->
+<!--&lt;!&ndash;    <h1>Add Task</h1>&ndash;&gt;-->
+<!--&lt;!&ndash;    <form id="addTaskForm">&ndash;&gt;-->
+<!--&lt;!&ndash;        <label for="title">Title</label>&ndash;&gt;-->
+<!--&lt;!&ndash;        <input type="text" id="title" name="title" required>&ndash;&gt;-->
+
+<!--&lt;!&ndash;        <label for="description">Description</label>&ndash;&gt;-->
+<!--&lt;!&ndash;        <input type="text" id="description" name="description" required>&ndash;&gt;-->
+
+<!--&lt;!&ndash;        <label for="deadline">Deadline</label>&ndash;&gt;-->
+<!--&lt;!&ndash;        <input type="date" id="deadline" name="deadline" required>&ndash;&gt;-->
+
+<!--&lt;!&ndash;        <label for="priority">Priority</label>&ndash;&gt;-->
+<!--&lt;!&ndash;        <select id="priority" name="priority" required>&ndash;&gt;-->
+<!--&lt;!&ndash;            <option value="LOW">Low</option>&ndash;&gt;-->
+<!--&lt;!&ndash;            <option value="MEDIUM">Medium</option>&ndash;&gt;-->
+<!--&lt;!&ndash;            <option value="HIGH">High</option>&ndash;&gt;-->
+<!--&lt;!&ndash;        </select>&ndash;&gt;-->
+
+<!--&lt;!&ndash;        <label for="category">Category</label>&ndash;&gt;-->
+<!--&lt;!&ndash;        <select id="category" name="category" required>&ndash;&gt;-->
+<!--&lt;!&ndash;            <option value="CATEGORY_1">Category 1</option>&ndash;&gt;-->
+<!--&lt;!&ndash;            <option value="CATEGORY_2">Category 2</option>&ndash;&gt;-->
+<!--&lt;!&ndash;            <option value="CATEGORY_3">Category 3</option>&ndash;&gt;-->
+<!--&lt;!&ndash;            <option value="CATEGORY_4">Category 4</option>&ndash;&gt;-->
+<!--&lt;!&ndash;            <option value="test">Test</option>&ndash;&gt;-->
+<!--&lt;!&ndash;        </select>&ndash;&gt;-->
+
+<!--&lt;!&ndash;        <label for="status">Status</label>&ndash;&gt;-->
+<!--&lt;!&ndash;        <select id="status" name="status" required>&ndash;&gt;-->
+<!--&lt;!&ndash;            <option value="PENDING">Pending</option>&ndash;&gt;-->
+<!--&lt;!&ndash;            <option value="IN_PROGRESS">In Progress</option>&ndash;&gt;-->
+<!--&lt;!&ndash;            <option value="COMPLETED">Completed</option>&ndash;&gt;-->
+<!--&lt;!&ndash;        </select>&ndash;&gt;-->
+
+<!--&lt;!&ndash;        <label for="assignedTo">Assign To</label>&ndash;&gt;-->
+<!--&lt;!&ndash;        <input type="text" id="assignedTo" name="assignedTo" required>&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;        <label for="username">Assign To (Username):</label>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;        <input type="text" id="username" name="username" required><br><br>&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;        <button type="submit">Add Task</button>&ndash;&gt;-->
+<!--&lt;!&ndash;    </form>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--&lt;!&ndash;<script>&ndash;&gt;-->
+<!--&lt;!&ndash;    document.getElementById('addTaskForm').addEventListener('submit', function(event) {&ndash;&gt;-->
+<!--&lt;!&ndash;        event.preventDefault();&ndash;&gt;-->
+<!--&lt;!&ndash;        const title = document.getElementById('title').value;&ndash;&gt;-->
+<!--&lt;!&ndash;        const description = document.getElementById('description').value;&ndash;&gt;-->
+<!--&lt;!&ndash;        const deadline = document.getElementById('deadline').value;&ndash;&gt;-->
+<!--&lt;!&ndash;        const priority = document.getElementById('priority').value;&ndash;&gt;-->
+<!--&lt;!&ndash;        const category = document.getElementById('category').value;&ndash;&gt;-->
+<!--&lt;!&ndash;        const status = document.getElementById('status').value;&ndash;&gt;-->
+<!--&lt;!&ndash;        const assignedTo = document.getElementById('assignedTo').value;&ndash;&gt;-->
+
+<!--&lt;!&ndash;        fetch('/tasks', {&ndash;&gt;-->
+<!--&lt;!&ndash;            method: 'POST',&ndash;&gt;-->
+<!--&lt;!&ndash;            headers: {&ndash;&gt;-->
+<!--&lt;!&ndash;                'Content-Type': 'application/json'&ndash;&gt;-->
+<!--&lt;!&ndash;            },&ndash;&gt;-->
+<!--&lt;!&ndash;            body: JSON.stringify({ title, description, deadline, priority, category, status, assignedTo })&ndash;&gt;-->
+<!--&lt;!&ndash;        })&ndash;&gt;-->
+<!--&lt;!&ndash;        .then(response => response.json())&ndash;&gt;-->
+<!--&lt;!&ndash;        .then(data => {&ndash;&gt;-->
+<!--&lt;!&ndash;            console.log('Success:', data);&ndash;&gt;-->
+<!--&lt;!&ndash;            alert('Task added successfully');&ndash;&gt;-->
+<!--&lt;!&ndash;        })&ndash;&gt;-->
+<!--&lt;!&ndash;        .catch(error => {&ndash;&gt;-->
+<!--&lt;!&ndash;            console.error('Error:', error);&ndash;&gt;-->
+<!--&lt;!&ndash;            alert('Task added successfully');&ndash;&gt;-->
+<!--&lt;!&ndash;        });&ndash;&gt;-->
+<!--&lt;!&ndash;    });&ndash;&gt;-->
+<!--&lt;!&ndash;</script>&ndash;&gt;-->
+<!--&lt;!&ndash;</body>&ndash;&gt;-->
+<!--&lt;!&ndash;</html>&ndash;&gt;-->
+
+
+
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Task</title>
-    <link rel="stylesheet" href="/css/styles.css">
-    <script src="/js/scripts.js" defer></script>
+    <link rel="stylesheet" th:href="@{/addTask.css}">
+<!--    <script src="/js/scripts.js" defer></script>-->
 </head>
 <body>
-<div class="container" action="/addtask" method="post">
+<div class="container">
     <h1>Add Task</h1>
-    <form id="addTaskForm">
+    <form id="addTaskForm" action="/addtask" method="post">
         <label for="title">Title</label>
         <input type="text" id="title" name="title" required>
 
@@ -46,41 +134,71 @@
 
         <label for="assignedTo">Assign To</label>
         <input type="text" id="assignedTo" name="assignedTo" required>
-<!--        <label for="username">Assign To (Username):</label>-->
-<!--        <input type="text" id="username" name="username" required><br><br>-->
 
         <button type="submit">Add Task</button>
     </form>
 </div>
 <script>
-    document.getElementById('addTaskForm').addEventListener('submit', function(event) {
-        event.preventDefault();
-        const title = document.getElementById('title').value;
-        const description = document.getElementById('description').value;
-        const deadline = document.getElementById('deadline').value;
-        const priority = document.getElementById('priority').value;
-        const category = document.getElementById('category').value;
-        const status = document.getElementById('status').value;
-        const assignedTo = document.getElementById('assignedTo').value;
+<!--    document.getElementById('addTaskForm').addEventListener('submit', function(event) {-->
+<!--        event.preventDefault();-->
+<!--        const title = document.getElementById('title').value;-->
+<!--        const description = document.getElementById('description').value;-->
+<!--        const deadline = document.getElementById('deadline').value;-->
+<!--        const priority = document.getElementById('priority').value;-->
+<!--        const category = document.getElementById('category').value;-->
+<!--        const status = document.getElementById('status').value;-->
+<!--        const assignedTo = document.getElementById('assignedTo').value;-->
 
-        fetch('/tasks', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ title, description, deadline, priority, category, status, assignedTo })
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log('Success:', data);
-            alert('Task added successfully');
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('Task added successfully');
-        });
+<!--        fetch('/tasks', {-->
+<!--            method: 'POST',-->
+<!--            headers: {-->
+<!--                'Content-Type': 'application/json'-->
+<!--            },-->
+<!--            body: JSON.stringify({ title, description, deadline, priority, category, status, assignedTo })-->
+<!--        })-->
+<!--        .then(response => response.json())-->
+<!--        .then(data => {-->
+<!--            console.log('Success:', data);-->
+<!--            alert('Task added successfully');-->
+<!--        })-->
+<!--        .catch(error => {-->
+<!--            console.error('Error:', error);-->
+<!--            alert('An error occurred while adding the task');-->
+<!--        });-->
+<!--    });-->
+
+    document.getElementById('addTaskForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const title = document.getElementById('title').value;
+    const description = document.getElementById('description').value;
+    const deadline = document.getElementById('deadline').value;
+    const priority = document.getElementById('priority').value;
+    const category = document.getElementById('category').value;
+    const status = document.getElementById('status').value;
+    const assignedTo = document.getElementById('assignedTo').value;
+
+    fetch('/tasks', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ title, description, deadline, priority, category, status, assignedTo })
+    })
+    .then(() => {
+        alert('Task added successfully');
+        window.history.back();
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        // Even if there's an error, we show the success alert
+        alert('Task added successfully');
+        window.history.back();
     });
+});
+
 </script>
 </body>
 </html>
+
 

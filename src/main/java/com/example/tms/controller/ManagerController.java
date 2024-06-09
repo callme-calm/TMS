@@ -150,23 +150,23 @@ public class ManagerController {
         return "edit_user";
     }
 
- //   @PostMapping("/users/update/{id}")
-//    public String updateUser(@PathVariable Long id, User user) {
-//        userService.updateUser(id, user);
-//        return "redirect:/manager/users";
-//    }
-
     @PostMapping("/users/update/{id}")
-    public String updateUser(@PathVariable("id") Long id, @ModelAttribute("user") User user, @RequestParam("roles") Long roleId , RedirectAttributes redirectAttributes ) {
-        User existingUser = userService.getUserById(id);
-        existingUser.setUsername(user.getUsername());
-//        existingUser.setPassword(user.getPassword()); // Consider encoding the password
-        Role role = roleService.findById(roleId);
-        existingUser.setRole(role);
-        userService.save(existingUser);
-       redirectAttributes.addFlashAttribute("message", "User updated successfully");
+    public String updateUser(@PathVariable Long id, User user) {
+        userService.updateUser(id, user);
         return "redirect:/manager/users";
     }
+
+//    @PostMapping("/users/update/{id}")
+//    public String updateUser(@PathVariable("id") Long id, @ModelAttribute("user") User user, @RequestParam("roles") Long roleId , RedirectAttributes redirectAttributes ) {
+//        User existingUser = userService.getUserById(id);
+//        existingUser.setUsername(user.getUsername());
+////        existingUser.setPassword(user.getPassword()); // Consider encoding the password
+//        Role role = roleService.findById(roleId);
+//        existingUser.setRole(role);
+//        userService.save(existingUser);
+//       redirectAttributes.addFlashAttribute("message", "User updated successfully");
+//        return "redirect:/manager/users";
+//    }
 
     @GetMapping("/users/delete/{id}")
     public String deleteUser(@PathVariable Long id) {
@@ -190,6 +190,14 @@ public class ManagerController {
 
     @PostMapping("/tasks/new")
     public String createTask(Task task) {
+
+        logger.debug("...This is the entire task ... : {}", task.getCategory());
+        logger.debug("...This is the entire task ... : {}", task.getAssignedTo());
+        logger.debug("...This is the entire task ... : {}", task.getDeadline());
+        logger.debug("...This is the entire task ... : {}", task.getId());
+        logger.debug("...This is the entire task ... : {}", task.getTitle());
+        logger.debug("...This is the entire task ... : {}", task.getDescription());
+        logger.debug("...This is the entire task ... : {}", task.getPriority());
 
         System.out.println("Task: " + task);
         taskService.createTask(task);

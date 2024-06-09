@@ -1,12 +1,30 @@
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <title>User Dashboard</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<h1>User Dashboard</h1>-->
+<!--<a th:href="@{/users/task}">Show Tasks</a>-->
+<!--<a th:href="@{/users/tasks/new}">Create Tasks</a>-->
+
+<!--</body>-->
+<!--</html>-->
+
+
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>User Dashboard</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/user_dashboard.css}">
 </head>
 <body>
-<h1>User Dashboard</h1>
-<a th:href="@{/users/task}">Show Tasks</a>
-<a th:href="@{/users/tasks/new}">Create Tasks</a>
-
+<div class="dashboard-container">
+    <h1>User Dashboard</h1>
+    <nav>
+        <a th:href="@{/users/task}">Show Tasks</a>
+        <a th:href="@{/users/tasks/new}">Create Tasks</a>
+    </nav>
+</div>
 </body>
 </html>

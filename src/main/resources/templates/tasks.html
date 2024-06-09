@@ -1,3 +1,5 @@
+
+
 <!--<!DOCTYPE html>-->
 <!--<html xmlns:th="http://www.thymeleaf.org">-->
 
@@ -17,6 +19,8 @@
 <!--        <th>Category</th>-->
 <!--        <th>Status</th>-->
 <!--        <th>Assigned To</th>-->
+<!--        <th>Message from user</th>-->
+<!--        <th>Actions</th>-->
 <!--    </tr>-->
 <!--    </thead>-->
 <!--    <tbody>-->
@@ -28,54 +32,114 @@
 <!--        <td th:text="${task.category}"></td>-->
 <!--        <td th:text="${task.status}"></td>-->
 <!--        <td th:text="${task.assignedTo.username}"></td>-->
+<!--        <td th:text="${task.message}"></td>-->
+<!--        <td>-->
+<!--            <a th:href="@{/manager/tasks/edit/{id}(id=${task.id})}">Edit</a>-->
+<!--            <a th:href="@{/manager/tasks/delete/{id}(id=${task.id})}">Delete</a>-->
+<!--        </td>-->
 <!--    </tr>-->
 <!--    </tbody>-->
 <!--</table>-->
+<!--<a href="/manager/tasks/new">Create Task</a>-->
+<!--<a href="/manager/dashboard">Back to Dashboard</a>-->
 <!--</body>-->
 <!--</html>-->
 
+
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Tasks</title>-->
+<!--    <link rel="stylesheet" type="text/css" th:href="@{/tasks.css}">-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="tasks-container">-->
+<!--    <h1>Task List</h1>-->
+<!--    <table>-->
+<!--        <thead>-->
+<!--        <tr>-->
+<!--            <th>Title</th>-->
+<!--            <th>Description</th>-->
+<!--            <th>Deadline</th>-->
+<!--            <th>Priority</th>-->
+<!--            <th>Category</th>-->
+<!--            <th>Status</th>-->
+<!--            <th>Assigned To</th>-->
+<!--            <th>Message from user</th>-->
+<!--            <th>Actions</th>-->
+<!--        </tr>-->
+<!--        </thead>-->
+<!--        <tbody>-->
+<!--        <tr th:each="task : ${tasks}">-->
+<!--            <td th:text="${task.title}"></td>-->
+<!--            <td th:text="${task.description}"></td>-->
+<!--            <td th:text="${task.deadline}"></td>-->
+<!--            <td th:text="${task.priority}"></td>-->
+<!--            <td th:text="${task.category}"></td>-->
+<!--            <td th:text="${task.status}"></td>-->
+<!--            <td th:text="${task.assignedTo.username}"></td>-->
+<!--            <td th:text="${task.message}"></td>-->
+<!--            <td class="actions">-->
+<!--                <a th:href="@{/manager/tasks/edit/{id}(id=${task.id})}">Edit</a>-->
+<!--                <a th:href="@{/manager/tasks/delete/{id}(id=${task.id})}">Delete</a>-->
+<!--            </td>-->
+<!--        </tr>-->
+<!--        </tbody>-->
+<!--    </table>-->
+<!--    <nav>-->
+<!--        <a href="/manager/tasks/new">Create Task</a>-->
+<!--        <a href="/manager/dashboard">Back to Dashboard</a>-->
+<!--    </nav>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+
+
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-
 <head>
     <meta charset="UTF-8">
     <title>Tasks</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/tasks.css}">
 </head>
 <body>
-<h1>Task List</h1>
-<table>
-    <thead>
-    <tr>
-        <th>Title</th>
-        <th>Description</th>
-        <th>Deadline</th>
-        <th>Priority</th>
-        <th>Category</th>
-        <th>Status</th>
-        <th>Assigned To</th>
-        <th>Message from user</th>
-        <th>Actions</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="task : ${tasks}">
-        <td th:text="${task.title}"></td>
-        <td th:text="${task.description}"></td>
-        <td th:text="${task.deadline}"></td>
-        <td th:text="${task.priority}"></td>
-        <td th:text="${task.category}"></td>
-        <td th:text="${task.status}"></td>
-        <td th:text="${task.assignedTo.username}"></td>
-        <td th:text="${task.message}"></td>
-        <td>
-            <a th:href="@{/manager/tasks/edit/{id}(id=${task.id})}">Edit</a>
-            <a th:href="@{/manager/tasks/delete/{id}(id=${task.id})}">Delete</a>
-        </td>
-    </tr>
-    </tbody>
-</table>
-<a href="/manager/tasks/new">Create Task</a>
-<a href="/manager/dashboard">Back to Dashboard</a>
+<div class="tasks-container">
+    <h1>Task List</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Deadline</th>
+            <th>Priority</th>
+            <th>Category</th>
+            <th>Status</th>
+            <th>Assigned To</th>
+            <th>Message from user</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="task : ${tasks}">
+            <td th:text="${task.title}"></td>
+            <td th:text="${task.description}"></td>
+            <td th:text="${task.deadline}"></td>
+            <td th:text="${task.priority}"></td>
+            <td th:text="${task.category}"></td>
+            <td th:text="${task.status}"></td>
+            <td th:text="${task.assignedTo.username}"></td>
+            <td th:text="${task.message}"></td>
+            <td class="actions"><a th:href="@{/manager/tasks/edit/{id}(id=${task.id})}">Edit</a></td>
+            <td class="actions"><a th:href="@{/manager/tasks/delete/{id}(id=${task.id})}">Delete</a></td>
+        </tr>
+        </tbody>
+    </table>
+    <nav>
+        <a href="/manager/tasks/new">Create Task</a>
+        <a href="/manager/dashboard">Back to Dashboard</a>
+    </nav>
+</div>
 </body>
 </html>
-

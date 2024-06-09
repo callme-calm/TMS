@@ -1,24 +1,84 @@
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <title>Register</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<form id="registerForm" action="/register" method="post">-->
+<!--    <label for="username">Username:</label>-->
+<!--    <input type="text" id="username" name="username"><br>-->
+
+<!--    <label for="password">Password:</label>-->
+<!--    <input type="password" id="password" name="password"><br>-->
+
+<!--    <label for="role">Role:</label>-->
+<!--    <select id="role" name="role">-->
+<!--        <option value="ROLE_USER">User</option>-->
+<!--        <option value="ROLE_ADMIN">Manager</option>-->
+<!--    </select><br>-->
+
+<!--    <button type="submit">Register</button>-->
+<!--</form>-->
+
+<!--<script>-->
+<!--    document.getElementById('registerForm').addEventListener('submit', function(event) {-->
+<!--        event.preventDefault();-->
+
+<!--        const username = document.getElementById('username').value;-->
+<!--        const password = document.getElementById('password').value;-->
+<!--        const role = document.getElementById('role').value;-->
+
+<!--        const registerData = {-->
+<!--            username: username,-->
+<!--            password: password,-->
+<!--            role: role-->
+<!--        };-->
+
+<!--        fetch('/register', {-->
+<!--            method: 'POST',-->
+<!--            headers: {-->
+<!--                'Content-Type': 'application/json'-->
+<!--            },-->
+<!--            body: JSON.stringify(registerData)-->
+<!--        })-->
+<!--        .then(response => {-->
+<!--            alert("User registered successfully!");-->
+<!--        });-->
+
+
+<!--    });-->
+<!--</script>-->
+
+<!--</body>-->
+<!--</html>-->
+
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Register</title>
+    <link rel="stylesheet" media="all"  th:href="@{/register.css}" type="text/css">
+
+
 </head>
 <body>
-<form id="registerForm" action="/register" method="post">
-    <label for="username">Username:</label>
-    <input type="text" id="username" name="username"><br>
+<div class="register-container">
+    <h1>Register</h1>
+    <form id="registerForm" action="/register" method="post">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" class="register-input"><br>
 
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password"><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" class="register-input"><br>
 
-    <label for="role">Role:</label>
-    <select id="role" name="role">
-        <option value="ROLE_USER">User</option>
-        <option value="ROLE_ADMIN">Manager</option>
-    </select><br>
+        <label for="role">Role:</label>
+        <select id="role" name="role" class="register-select">
+            <option value="ROLE_USER">User</option>
+            <option value="ROLE_ADMIN">Manager</option>
+        </select><br>
 
-    <button type="submit">Register</button>
-</form>
+        <button type="submit" class="register-btn">Register</button>
+    </form>
+</div>
 
 <script>
     document.getElementById('registerForm').addEventListener('submit', function(event) {
@@ -44,8 +104,6 @@
         .then(response => {
             alert("User registered successfully!");
         });
-
-
     });
 </script>
 

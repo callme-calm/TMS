@@ -1,3 +1,16 @@
+<!--&lt;!&ndash;&lt;!&ndash;<!DOCTYPE html>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;<html xmlns:th="http://www.thymeleaf.org">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;<head>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;    <title>Manager Dashboard</title>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;</head>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;<body>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;<h1>Manager Dashboard</h1>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;<a href="/manager/adduser">Add User</a>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;<a href="/manager/tasks">View Tasks</a>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;<a href="/manager/tasks/new">Create Task</a>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;</body>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;</html>&ndash;&gt;&ndash;&gt;-->
+
 <!--&lt;!&ndash;<!DOCTYPE html>&ndash;&gt;-->
 <!--&lt;!&ndash;<html xmlns:th="http://www.thymeleaf.org">&ndash;&gt;-->
 <!--&lt;!&ndash;<head>&ndash;&gt;-->
@@ -5,11 +18,17 @@
 <!--&lt;!&ndash;</head>&ndash;&gt;-->
 <!--&lt;!&ndash;<body>&ndash;&gt;-->
 <!--&lt;!&ndash;<h1>Manager Dashboard</h1>&ndash;&gt;-->
-<!--&lt;!&ndash;<a href="/manager/adduser">Add User</a>&ndash;&gt;-->
-<!--&lt;!&ndash;<a href="/manager/tasks">View Tasks</a>&ndash;&gt;-->
-<!--&lt;!&ndash;<a href="/manager/tasks/new">Create Task</a>&ndash;&gt;-->
+<!--&lt;!&ndash;<nav>&ndash;&gt;-->
+<!--&lt;!&ndash;    <ul>&ndash;&gt;-->
+<!--&lt;!&ndash;        <li><a href="/manager/adduser">Add User</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;        <li><a href="/manager/users">View Users</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;        <li><a href="/manager/tasks">View Tasks</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;        <li><a href="/manager/tasks/new">Create Task</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;    </ul>&ndash;&gt;-->
+<!--&lt;!&ndash;</nav>&ndash;&gt;-->
 <!--&lt;!&ndash;</body>&ndash;&gt;-->
 <!--&lt;!&ndash;</html>&ndash;&gt;-->
+
 
 <!--<!DOCTYPE html>-->
 <!--<html xmlns:th="http://www.thymeleaf.org">-->
@@ -24,6 +43,7 @@
 <!--        <li><a href="/manager/users">View Users</a></li>-->
 <!--        <li><a href="/manager/tasks">View Tasks</a></li>-->
 <!--        <li><a href="/manager/tasks/new">Create Task</a></li>-->
+<!--        <li><a href="/manager/tasks/submitted">View Submitted Tasks</a></li>-->
 <!--    </ul>-->
 <!--</nav>-->
 <!--</body>-->
@@ -34,17 +54,21 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Manager Dashboard</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/manager_dashboard.css}">
 </head>
 <body>
-<h1>Manager Dashboard</h1>
-<nav>
-    <ul>
-        <li><a href="/manager/adduser">Add User</a></li>
-        <li><a href="/manager/users">View Users</a></li>
-        <li><a href="/manager/tasks">View Tasks</a></li>
-        <li><a href="/manager/tasks/new">Create Task</a></li>
-        <li><a href="/manager/tasks/submitted">View Submitted Tasks</a></li>
-    </ul>
-</nav>
+<div class="dashboard-container">
+    <h1>Manager Dashboard</h1>
+    <nav>
+        <ul>
+            <li><a href="/manager/adduser">Add User</a></li>
+            <li><a href="/manager/users">View Users</a></li>
+            <li><a href="/manager/tasks">View Tasks</a></li>
+            <li><a href="/manager/tasks/new">Create Task</a></li>
+            <li><a href="/manager/tasks/submitted">View Submitted Tasks</a></li>
+        </ul>
+    </nav>
+</div>
 </body>
 </html>
+
